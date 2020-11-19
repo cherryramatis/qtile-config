@@ -12,20 +12,23 @@ terminal = "alacritty"
 
 keys = [
     # Switch between windows
-    Key([mod], "h", lazy.layout.left()),
-    Key([mod], "l", lazy.layout.right()),
-    Key([mod], "j", lazy.layout.down()),
-    Key([mod], "k", lazy.layout.up()),
+    Key([mod], "h", lazy.layout.left(), desc="Move focus to left window"),
+    Key([mod], "l", lazy.layout.right(), desc="Move focus to right window"),
+    Key([mod], "j", lazy.layout.down(), desc="Move focus to window below"),
+    Key([mod], "k", lazy.layout.up(), desc="Move focus to window above"),
 
     # Swap windows
-    Key([mod, "shift"], "h", lazy.layout.swap_left()),
-    Key([mod, "shift"], "l", lazy.layout.swap_right()),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
-    Key([mod], "i", lazy.layout.grow()),
-    Key([mod], "m", lazy.layout.shrink()),
-    Key([mod], "n", lazy.layout.normalize()),
-    Key([mod], "o", lazy.layout.maximize()),
+    Key([mod, "shift"], "h", lazy.layout.swap_left(), desc="Swap window to left"),
+    Key([mod, "shift"], "l", lazy.layout.swap_right(),
+        desc="Swap window to right"),
+    Key([mod, "shift"], "j", lazy.layout.shuffle_down(),
+        desc="Swap window to down"),
+    Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Swap window to up"),
+    Key([mod], "i", lazy.layout.grow(), desc="Increase width of master window"),
+    Key([mod], "m", lazy.layout.shrink(),
+        desc="Decrease width of master window"),
+    Key([mod], "n", lazy.layout.normalize(), desc="Normalize size"),
+    Key([mod], "o", lazy.layout.maximize(), desc="Maximize size"),
 
     # Switch window focus to other pane(s) of stack
     Key([mod], "space", lazy.layout.next(),
@@ -38,11 +41,11 @@ keys = [
     Key([mod], "p", lazy.spawn(
         "rofi -show run -font 'hack 10' -lines 3 -eh 2 -bw 0 -width 100 -padding 400 -fullscreen"), desc="Spawn rofi"),
 
-    # Key([mod], "-", lazy.spawn("pamixer --allow-boost -d 5"),
-    #     desc="Decrease the volume"),
-    # Key([mod], "=", lazy.spawn("pamixer --allow-boost -i 5"),
-    #     desc="Increase the volume"),
-    Key([mod, "control"], "d", lazy.spawn(
+    Key([mod], "minus", lazy.spawn("pamixer --allow-boost -d 5"),
+        desc="Decrease the volume"),
+    Key([mod], "equal", lazy.spawn("pamixer --allow-boost -i 5"),
+        desc="Increase the volume"),
+    Key([mod], "d", lazy.spawn(
         "alacritty -e ranger"), desc="Spawn file browser"),
     Key([mod, "shift"], "a", lazy.spawn(
         "alacritty -e calcurse"), desc="Spawn calendar"),
@@ -61,12 +64,6 @@ keys = [
         desc="Spawn slack client"),
     Key([mod, "control"], "s", lazy.spawn("/home/cherry/bin/open-web-apps"),
         desc="Spawn util web applications in surf"),
-    # Toggle between split and unsplit sides of stack.
-    # Split = all windows displayed
-    # Unsplit = 1 window displayed, like Max layout, but still with
-    # multiple stack panes
-    Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
-        desc="Toggle between split and unsplit sides of stack"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
 
     # Toggle between different layouts as defined below

@@ -51,6 +51,8 @@ keys = [
         desc="Increase the volume"),
     Key([mod], "d", lazy.spawn(
         "alacritty -e ranger"), desc="Spawn file browser"),
+    Key([mod], "c", lazy.spawn(
+        "alacritty -e cmus"), desc="Spawn music player"),
     Key([mod, "shift"], "a", lazy.spawn(
         "alacritty -e calcurse"), desc="Spawn calendar"),
     Key([mod, "control"], "j", lazy.spawn(
@@ -186,7 +188,7 @@ screens = [
                 widget.PulseVolume(),
                 widget.TextBox(" "),
                 widget.Sep(),
-                widget.TextBox(""),
+                widget.TextBox("🎻"),
                 widget.Cmus(max_chars=30),
                 widget.TextBox(" "),
                 widget.Sep(),

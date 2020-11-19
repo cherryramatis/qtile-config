@@ -24,11 +24,12 @@ keys = [
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(),
         desc="Swap window to down"),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Swap window to up"),
-    Key([mod], "i", lazy.layout.grow(), desc="Increase width of master window"),
-    Key([mod], "m", lazy.layout.shrink(),
+    Key([mod, "control"], "l", lazy.layout.grow(),
+        desc="Increase width of master window"),
+    Key([mod, "control"], "h", lazy.layout.shrink(),
         desc="Decrease width of master window"),
     Key([mod], "n", lazy.layout.normalize(), desc="Normalize size"),
-    Key([mod], "o", lazy.layout.maximize(), desc="Maximize size"),
+    Key([mod], "f", lazy.layout.maximize(), desc="Maximize size"),
 
     # Switch window focus to other pane(s) of stack
     Key([mod], "space", lazy.layout.next(),
@@ -40,6 +41,9 @@ keys = [
 
     Key([mod], "p", lazy.spawn(
         "rofi -show run -font 'hack 10' -lines 3 -eh 2 -bw 0 -width 100 -padding 400 -fullscreen"), desc="Spawn rofi"),
+
+    Key([mod, "control"], "Tab", lazy.spawn(
+        "rofi -show window -font 'hack 10' -lines 3 -eh 2 -bw 0 -width 100 -padding 400 -fullscreen"), desc="Switch open windows"),
 
     Key([mod], "minus", lazy.spawn("pamixer --allow-boost -d 5"),
         desc="Decrease the volume"),
@@ -53,7 +57,7 @@ keys = [
         "alacritty -e joplin"), desc="Spawn Note taking"),
     Key([mod, "control"], "t", lazy.spawn(
         "alacritty -e tg"), desc="Spawn Telegram client"),
-    Key([mod, "control"], "l", lazy.spawn(
+    Key([mod, "shift"], "s", lazy.spawn(
         "/home/cherry/bin/switch_keyboard_layout"), desc="Switch keyboard language"),
     Key([mod, "shift"], "p", lazy.spawn("/home/cherry/bin/switch_project"),
         desc="Spawn alacritty with tmux in different projects"),
@@ -180,6 +184,10 @@ screens = [
                 widget.TextBox(" "),
                 widget.TextBox(""),
                 widget.PulseVolume(),
+                widget.TextBox(" "),
+                widget.Sep(),
+                widget.TextBox(""),
+                widget.Cmus(max_chars=30),
                 widget.TextBox(" "),
                 widget.Sep(),
                 widget.TextBox(" "),
